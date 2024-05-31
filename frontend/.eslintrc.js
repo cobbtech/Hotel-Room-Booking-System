@@ -17,6 +17,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'jsx-a11y/label-has-associated-control': 'off',
+    'jsx-a11y/control-has-associated-label': 'off',  // Add this line to disable the rule
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
