@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root2024
+      MONGO_INITDB_DATABASE: hotel
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - backend_network
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "3000:3000"
+    networks:
+      - backend_network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "3001:3000"
+    networks:
+      - backend_network
+
+volumes:
+  mongodb_data:
+
+networks:
+  backend_network:
+    driver: bridge
